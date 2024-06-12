@@ -69,6 +69,7 @@
       outline: none;
       border: none;
       font-size: 1em; /* Use relative units */
+      transition: all 1s;
     }
 
     input[type="text"] {
@@ -105,6 +106,21 @@
     .slider-container img:hover {
       border-color: green;
       transform: scale(1.1);
+    }
+
+    button:hover {
+      opacity: 0.8;
+      cursor: pointer;
+      
+    }
+
+    .red {
+      background-color: crimson !important;
+    }
+    
+    .red:hover {
+      opacity: 0.8;
+      cursor: pointer;
     }
 
     /* For WebKit browsers */
@@ -177,7 +193,7 @@
       }
 
       .slider-container img {
-        height: 60px;
+        /* height: 60px; */
         margin: 0 3px;
       }
     } 
@@ -188,20 +204,21 @@
   <div class="container">
     <h1 style="text-align: center;" >Screwhetas Management</h1>
     <div class="slider-container">
-      <img src="imgs/Ibraheim.png" alt="Ibraheim" onclick="addImageMember(this.alt)">
-      <img src="imgs/Abdo_Rg.png" alt="Abdo Ragab" onclick="addImageMember(this.alt)">
-      <img src="imgs/Abdo_os.png" alt="Abdo Osama" onclick="addImageMember(this.alt)">
-      <img src="imgs/Ahmed Osama.jpg" alt="Ahmed Osama" onclick="addImageMember(this.alt)">
-      <img src="imgs/Mohamed Adel.jpg" alt="Muhamed Adel" onclick="addImageMember(this.alt)">
-      <img src="imgs/Mahmoud Khalid.jpeg" alt="Mahmoud Khalid" onclick="addImageMember(this.alt)">
-      <img src="imgs/Hoda.jpg" alt="Mahmoud Ramadan" onclick="addImageMember(this.alt)">
-      <img src="imgs/Mustafa Ehab.jpg" alt="Mustafa Ehab" onclick="addImageMember(this.alt)">
+      <img src="imgs/Ibraheim.png" alt="انوش" onclick="addImageMember(this.alt)">
+      <img src="imgs/Abdo_Rg.png" alt="عبدو رجبيتا" onclick="addImageMember(this.alt)">
+      <img src="imgs/Abdo_os.png" alt="عبدو اساميتا" onclick="addImageMember(this.alt)">
+      <img src="imgs/Ahmed Osama.jpg" alt="جاساميتا" onclick="addImageMember(this.alt)">
+      <img src="imgs/Mohamed Adel.jpg" alt="بطوط السويقي" onclick="addImageMember(this.alt)">
+      <img src="imgs/Mahmoud Khalid.jpeg" alt="كاريزميتا" onclick="addImageMember(this.alt)">
+      <img src="imgs/Hoda.jpg" alt="رمدنيتا" onclick="addImageMember(this.alt)">
+      <img src="imgs/Mustafa Ehab.jpg" alt="حناكيتا" onclick="addImageMember(this.alt)">
       <!-- Add more images as needed -->
     </div>
     <div class="add-form">
       <!-- <input type="text" id="nameInput"> -->
       <!-- <button onclick="addName()">Add Name</button> -->
       <button onclick="resetAllRounds()">Reset All Rounds</button>
+      <button class="red" onclick="deleteAll()">Delete All</button>
     </div>
     <table id="roundTable">
       <thead>
@@ -290,6 +307,11 @@
       players = players.filter(player => player.id !== id);
       localStorage.setItem("players", JSON.stringify(players));
       renderTable(players);
+    }
+
+    function deleteAll() {
+      localStorage.clear();
+      renderTable([]);
     }
 
     function resetAllRounds() {
